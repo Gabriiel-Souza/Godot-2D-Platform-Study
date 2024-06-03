@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmrjvvsgr8nxa"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_ya3v6"]
+[ext_resource type="Texture2D" uid="uid://df1ng35ferdm4" path="res://Assets/Sprite Pack 5/2 - Lil Wiz/Idle_(32 x 32).png" id="2_qjq3g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwjg5"]
+atlas = ExtResource("2_qjq3g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siq35"]
+atlas = ExtResource("2_qjq3g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2ago"]
+atlas = ExtResource("2_qjq3g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gftw7"]
+atlas = ExtResource("2_qjq3g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf1hj"]
+atlas = ExtResource("2_qjq3g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cblfg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwjg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siq35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2ago")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gftw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf1hj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xyaw"]
+size = Vector2(20, 25)
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(0, -15)
+script = ExtResource("1_ya3v6")
+
+[node name="playerAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cblfg")
+animation = &"idle"
+frame = 4
+frame_progress = 0.529185
+speed_scale = 1.3
+
+[node name="playerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_8xyaw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(55, -43)
+zoom = Vector2(2, 2)
+limit_left = -16
+limit_top = -340
+limit_right = 1000
+limit_bottom = 20
+limit_smoothed = true
+position_smoothing_enabled = true
